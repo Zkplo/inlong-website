@@ -41,13 +41,19 @@ CREATE TABLE sink_table (
 
 ## Airflow 初始化
 
+### 获取初始 DAG
+
+它们可以在[Inlong](https://github.com/apache/inlong)获取。
+
+![airflow_get_DAGs](img/pulsar_mysql/airflow/airflow_get_DAGs.jpg)
+
+> Airflow 没有提供 DAG 创建的提供 API ，因此需要两个原始 DAG。`dag_creator`用于创建离线任务，`dag_cleaner`用于定时去清理离线任务。
+
 ### 创建初始 DAG
 
 首先将DAG文件放到Airflow默认的DAG目录下面，等待一段时间，Airflow调度器会去扫描该目录，并加载DAG：
 
 ![airflow_original_DAG](img/pulsar_mysql/airflow/airflow_original_DAG.png)
-
-> Airflow 没有提供 DAG 创建的提供 API ，因此需要两个原始 DAG。`dag_creator`用于创建离线任务，`dag_cleaner`用于定时去清理离线任务。它们可以在[Inlong](https://github.com/apache/inlong)获取。
 
 ### Airflow REST API
 
@@ -92,7 +98,7 @@ schedule.engine.airflow.creator.id=dag_creator
 
 ![airflow_create_task_DAG_result.png](img/pulsar_mysql/airflow/airflow_create_task_DAG_result.png)
 
->离线任务DAG可能不会立即进行调度，因为 Airflow 会定期去扫描 DAG 文件，再将其加入调度中，所以可能等待一段时间。
+>离线任务DAG可能不会立即进行调度，因为 Airflow 会定期去扫描 DAG 文件，再将其加入调度中，所以可能需要等待一段时间。
 
 离线任务执行结果如下：
 

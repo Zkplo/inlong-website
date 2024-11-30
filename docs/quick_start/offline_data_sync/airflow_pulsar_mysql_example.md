@@ -41,12 +41,18 @@ CREATE TABLE sink_table (
 
 ## Airflow Initialization
 
+### Get Initial DAG
+
+They can be obtained from [Inlong](https://github.com/apache/inlong).
+
+![airflow_get_DAGs](img/pulsar_mysql/airflow/airflow_get_DAGs.jpg)
+
+> Airflow does not provide an API for DAG creation, so two original DAGs are required. `dag_creator` is used to create offline tasks, and `dag_cleaner` is used to clean up offline tasks regularly.
+
 ### Create Initial DAG
 
 Place the DAG file in the Airflow default DAG directory and wait for a while. The Airflow scheduler will scan the directory and load the DAG:
 ![airflow_original_DAG](img/pulsar_mysql/airflow/airflow_original_DAG.png)
-
-> Airflow does not provide an API for DAG creation, so two original DAGs are required. `dag_creator` is used to create offline tasks, and `dag_cleaner` is used to clean up offline tasks regularly. They can be obtained from [Inlong](https://github.com/apache/inlong).
 
 ### Airflow REST API
 
