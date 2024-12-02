@@ -57,7 +57,7 @@ Conventional Scheduling Configuration requires the following parameters:
 
 Crontab Scheduling requires the following parameters:
 - Valid Time: Includes start time and end time; the scheduled task will only execute within this time range.
-- Crontab Expression: Indicates the task cycle, e.g., `0 */5 * * * ?`
+- Crontab Expression: Indicates the task cycle, e.g., `0 */5 * * * ?`.
 
 ![Cron Schedule Rule](img/pulsar_mysql/quartz/cron_schedule.png)
 

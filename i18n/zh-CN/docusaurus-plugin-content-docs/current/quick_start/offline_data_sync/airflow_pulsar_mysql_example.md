@@ -14,7 +14,7 @@ sidebar_position:  3
 ### 添加 Connectors
 
 下载与 Flink 版本对应的 [connectors](https://inlong.apache.org/zh-CN/downloads) ，解压后将 `sort-connector-jdbc-[version]-SNAPSHOT.jar` 放在 `/inlong-sort/connectors/` 目录下。
-> 当前 Apache InLong 的离线数据同步能力只支持 Flink-1.18 版本，所以请下载 1.18 版本的 connectors。、
+> 当前 Apache InLong 的离线数据同步能力只支持 Flink-1.18 版本，所以请下载 1.18 版本的 connectors。
 
 ## 创建集群和数据目标
 

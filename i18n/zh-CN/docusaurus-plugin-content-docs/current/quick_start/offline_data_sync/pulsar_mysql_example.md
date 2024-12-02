@@ -24,7 +24,7 @@ User: admin
 Password: inlong
 ```
 ### 创建集群标签
-页面点击 【集群管理】→【标签管理】→【新建】
+页面点击 【集群管理】→【标签管理】→【新建】。
 
 ![Create Cluster Tag](img/pulsar_mysql/quartz/cluster_tag.png)
 
@@ -46,16 +46,16 @@ Password: inlong
 在同步类型勾选为“离线”之后，就可以配置离线任务的调度规则，目前支持两种：常规和 crontab。
 
 常规调度配置需要设置以下参数：
-- 调度单位：支持分钟、小时、天、月、年以及单次，单次表示只执行一次
-- 调度周期：表示两次任务调度之间的时间间隔
-- 延迟时间：表示任务启动的延迟时间
-- 有效时间：包括起始时间和结束时间，调度任务只会在这个时间范围内执行
+- 调度单位：支持分钟、小时、天、月、年以及单次，单次表示只执行一次。
+- 调度周期：表示两次任务调度之间的时间间隔。
+- 延迟时间：表示任务启动的延迟时间。
+- 有效时间：包括起始时间和结束时间，调度任务只会在这个时间范围内执行。
 
 ![Create Offline Group](img/pulsar_mysql/quartz/normal_schedule.png)
 
 crontab 调度需要设置以下参数：
-- 有效时间：包括起始时间和结束时间，调度任务只会在这个时间范围内执行
-- crontab 表达式：表示任务的周期，比如 0 */5 * * * ?
+- 有效时间：包括起始时间和结束时间，调度任务只会在这个时间范围内执行。
+- crontab 表达式：表示任务的周期，比如 `0 */5 * * * ?` 。
 
 ![Crontab Schedule](img/pulsar_mysql/quartz/cron_schedule.png)
 
@@ -84,7 +84,7 @@ CREATE TABLE sink_table (
 
 ### 配置字段信息
 
-分别在 【源字段】 和 【目标字段】中配置 Schema 映射信息，完成后点击 【提交审批】
+分别在 【源字段】 和 【目标字段】中配置 Schema 映射信息，完成后点击 【提交审批】。
 
 ![Create Source Fields](img/pulsar_mysql/quartz/source_field.png)
 
@@ -92,7 +92,7 @@ CREATE TABLE sink_table (
 
 ### 审批数据流
 
-页面点击【审批管理】->【我的审批】->【详情】->【通过】
+页面点击【审批管理】->【我的审批】->【详情】->【通过】。
 
 ![Approve](img/pulsar_mysql/quartz/approve.png)
 
