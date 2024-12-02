@@ -63,9 +63,9 @@ By default, Airflow will reject all REST API requests. Please refer to the [Airf
 Modify the configuration file according to the configuration file requirements and restart Inlong Manager.
 ```properties
 # Inlong Manager URL accessible by the scheduler
-schedule.engine.inlong.manager.url=http://192.168.101.2:8083
+schedule.engine.inlong.manager.url=http://inlongManagerIp:inlongManagerPort
 # Management URL for Airflow
-schedule.engine.airflow.baseUrl=http://192.168.101.16:8080
+schedule.engine.airflow.baseUrl=http://airflowIP:airflowPort
 # Username and password for Airflow REST API authentication
 schedule.engine.airflow.username=airflow
 schedule.engine.airflow.password=airflow
@@ -83,9 +83,8 @@ schedule.engine.airflow.creator.id=dag_creator
 ### Create Data Stream Group
 ![airflow_data_stream_group](img/pulsar_mysql/airflow/airflow_data_stream_group.png)
 
-### Create Data Source And Data Target
-Please refer to this section: [Pulsar to MySQL Example](./pulsar_mysql_example.md)
-### Airflow Offline Task Creation Result
+Please refer to the following steps: [Pulsar to MySQL Example](./pulsar_mysql_example.md)
+### Create Airflow Offline Task
 
 After approval and configuration, Inlong Manager will trigger `dag_creator` through the Airflow API to create the offline task DAG:
 

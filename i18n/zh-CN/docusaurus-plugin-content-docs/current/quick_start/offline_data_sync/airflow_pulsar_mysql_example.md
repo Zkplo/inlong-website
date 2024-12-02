@@ -13,7 +13,7 @@ sidebar_position:  3
 
 ### 添加 Connectors
 
-下载与 Flink 版本对应的 [connectors](https://inlong.apache.org/zh-CN/downloads)，解压后将 `sort-connector-jdbc-[version]-SNAPSHOT.jar` 放在 `/inlong-sort/connectors/` 目录下。
+下载与 Flink 版本对应的 [connectors](https://inlong.apache.org/zh-CN/downloads) ，解压后将 `sort-connector-jdbc-[version]-SNAPSHOT.jar` 放在 `/inlong-sort/connectors/` 目录下。
 > 当前 Apache InLong 的离线数据同步能力只支持 Flink-1.18 版本，所以请下载 1.18 版本的 connectors。、
 
 ## 创建集群和数据目标
@@ -29,7 +29,7 @@ sidebar_position:  3
 
 ![airflow_create_data_target](img/pulsar_mysql/airflow/airflow_create_data_target.png)
 
-执行如下Sql语句：
+执行如下 Sql 语句：
 
 ```mysql
 CREATE TABLE sink_table (
@@ -43,21 +43,21 @@ CREATE TABLE sink_table (
 
 ### 获取初始 DAG
 
-它们可以在[Inlong](https://github.com/apache/inlong)获取。
+它们可以在 [Inlong](https://github.com/apache/inlong) 获取。
 
 ![airflow_get_DAGs](img/pulsar_mysql/airflow/airflow_get_DAGs.jpg)
 
-> Airflow 没有提供 DAG 创建的提供 API ，因此需要两个原始 DAG。`dag_creator`用于创建离线任务，`dag_cleaner`用于定时去清理离线任务。
+> Airflow 没有提供 DAG 创建的提供 API ，因此需要两个原始 DAG。`dag_creator` 用于创建离线任务，`dag_cleaner` 用于定时去清理离线任务。
 
 ### 创建初始 DAG
 
-首先将DAG文件放到Airflow默认的DAG目录下面，等待一段时间，Airflow调度器会去扫描该目录，并加载DAG：
+首先将 DAG 文件放到 Airflow 默认的 DAG 目录下面，等待一段时间，Airflow 调度器会去扫描该目录，并加载 DAG ：
 
 ![airflow_original_DAG](img/pulsar_mysql/airflow/airflow_original_DAG.png)
 
 ### Airflow REST API
 
-默认情况下，Airflow 会拒绝所有 REST API 请求。请参考[Airflow 官方文档](https://airflow.apache.org/docs/apache-airflow-providers-fab/stable/auth-manager/api-authentication.html)进行配置。
+默认情况下，Airflow 会拒绝所有 REST API 请求。请参考 [Airflow 官方文档](https://airflow.apache.org/docs/apache-airflow-providers-fab/stable/auth-manager/api-authentication.html) 进行配置。
 
 ### Inlong Manager 配置
 
@@ -65,9 +65,9 @@ CREATE TABLE sink_table (
 
 ```properties
 # Inlong Manager URL accessible by the scheduler
-schedule.engine.inlong.manager.url=http://192.168.101.2:8083
+schedule.engine.inlong.manager.url=http://inlongManagerIp:inlongManagerPort
 # Management URL for Airflow
-schedule.engine.airflow.baseUrl=http://192.168.101.16:8080
+schedule.engine.airflow.baseUrl=http://airflowIP:airflowPort
 # 用于Airflow的REST API认证的用户名和密码
 schedule.engine.airflow.username=airflow
 schedule.engine.airflow.password=airflow
@@ -87,24 +87,23 @@ schedule.engine.airflow.creator.id=dag_creator
 ### 创建数据流组
 ![airflow_data_stream_group](img/pulsar_mysql/airflow/airflow_data_stream_group.png)
 
-### 创建数据源和数据目标
-该小节请参照: [Pulsar 到 MySQL 示例](./pulsar_mysql_example.md)
+后续步骤请参照: [Pulsar 到 MySQL 示例](./pulsar_mysql_example.md)
 
-### Airflow离线任务创建结果
+### 创建 Airflow 离线任务
 
-审批并配置成功后，Inlong Manager 会去通过 Airflow API 触发`dag_creator`去创建离线任务DAG：
+审批并配置成功后，Inlong Manager 会去通过 Airflow API 触发 `dag_creator` 去创建离线任务 DAG ：
 
 ![airflow_create_task_DAG.png](img/pulsar_mysql/airflow/airflow_create_task_DAG.png)
 
 ![airflow_create_task_DAG_result.png](img/pulsar_mysql/airflow/airflow_create_task_DAG_result.png)
 
->离线任务DAG可能不会立即进行调度，因为 Airflow 会定期去扫描 DAG 文件，再将其加入调度中，所以可能需要等待一段时间。
+>离线任务 DAG 可能不会立即进行调度，因为 Airflow 会定期去扫描 DAG 文件，再将其加入调度中，所以可能需要等待一段时间。
 
 离线任务执行结果如下：
 
 ![airflow_DAG_task_result.png](img/pulsar_mysql/airflow/airflow_DAG_task_result.png)
 
-> Airflow 会根据`创建数据流组`小节中的配置，定期去调用 Inlong Manager 所提供的接口进行Flink任务的提交，这里也是为什么在`Inlong Manager配置` 小节中需要保存 Inlong Manager 的认证信息。
+> Airflow 会根据`创建数据流组`小节中的配置，定期去调用 Inlong Manager 所提供的接口进行 Flink 任务的提交，这里也是为什么在 `Inlong Manager配置` 小节中需要保存 Inlong Manager 的认证信息。
 
 ## 测试数据
 ### 发送数据

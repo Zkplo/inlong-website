@@ -53,7 +53,7 @@ Password: inlong
 
 ![Create Offline Group](img/pulsar_mysql/quartz/normal_schedule.png)
 
-crontab调度需要设置以下参数：
+crontab 调度需要设置以下参数：
 - 有效时间：包括起始时间和结束时间，调度任务只会在这个时间范围内执行
 - crontab 表达式：表示任务的周期，比如 0 */5 * * * ?
 
