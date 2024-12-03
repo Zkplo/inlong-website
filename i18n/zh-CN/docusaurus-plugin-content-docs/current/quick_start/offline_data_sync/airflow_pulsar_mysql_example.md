@@ -64,16 +64,16 @@ CREATE TABLE sink_table (
 根据配置文件要求，对配置文件进行修改，并重启 Inlong Manager 。
 
 ```properties
-# Inlong Manager URL accessible by the scheduler
+# Airflow 能够访问到的 Inlong Manager 的 url
 schedule.engine.inlong.manager.url=http://inlongManagerIp:inlongManagerPort
-# Management URL for Airflow
+# Airflow 管理页面的 URL
 schedule.engine.airflow.baseUrl=http://airflowIP:airflowPort
-# 用于Airflow的REST API认证的用户名和密码
+# 用于 Airflow 的 REST API 认证的用户名和密码
 schedule.engine.airflow.username=airflow
 schedule.engine.airflow.password=airflow
 # 用来保存 Inlong Manager 认证信息的 Connection
 schedule.engine.airflow.connection.id=inlong_connection
-# 两个原始DAG的id
+# 两个原始 DAG 的 id
 schedule.engine.airflow.cleaner.id=dag_cleaner
 schedule.engine.airflow.creator.id=dag_creator
 ```
@@ -103,7 +103,7 @@ schedule.engine.airflow.creator.id=dag_creator
 
 ![airflow_DAG_task_result.png](img/pulsar_mysql/airflow/airflow_DAG_task_result.png)
 
-> Airflow 会根据`创建数据流组`小节中的配置，定期去调用 Inlong Manager 所提供的接口进行 Flink 任务的提交，这里也是为什么在 `Inlong Manager配置` 小节中需要保存 Inlong Manager 的认证信息。
+> Airflow 会根据`创建数据流组`小节中的配置，定期去调用 Inlong Manager 所提供的接口进行 Flink 任务的提交，这里也是为什么在 `Inlong Manager 配置` 小节中需要保存 Inlong Manager 的认证信息。
 
 ## 测试数据
 ### 发送数据
