@@ -43,7 +43,7 @@ CREATE TABLE sink_table (
 
 ### 获取初始 DAG
 
-它们可以在 [Inlong](https://github.com/apache/inlong) 获取。
+`dag_creator` 和 `dag_cleaner` 可以在 [Inlong](https://github.com/apache/inlong) 获取。
 
 ![airflow_get_DAGs](img/pulsar_mysql/airflow/airflow_get_DAGs.jpg)
 
